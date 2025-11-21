@@ -1,5 +1,5 @@
-package_name: "alpine-baselayout"
-repo_url: "https://dl-cdn.alpinelinux.org/alpine/v3.19/main/x86_64"
+repo_url: "test_repo.txt"
+package_name: "A"
 repo_mode: "test"
 ascii_tree: true
 filter_substring: ""
