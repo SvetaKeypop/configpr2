@@ -14,6 +14,7 @@ class Config:
         self.repo_mode: str = ""
         self.ascii_tree: bool = False
         self.filter_substring: str = ""
+        self.load_order: bool = False
 
     def load(self) -> None:
         # загрузка конфигурации и валидация
@@ -56,9 +57,14 @@ class Config:
         if not isinstance(filter_substring, str):
             raise ConfigError("'filter_substring' должен быть строкой")
 
+        load_order = data.get("load_order", False)
+        if not isinstance(load_order, bool):
+            raise ConfigError("'load_order' должен быть булевым значением (true/false)")
+
         #сохранение в поля объекта
         self.package_name = package_name.strip()
         self.repo_url = repo_url.strip()
         self.repo_mode = repo_mode.strip()
         self.ascii_tree = ascii_tree
         self.filter_substring = filter_substring
+        self.load_order = load_order

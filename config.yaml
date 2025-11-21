@@ -1,6 +1,6 @@
-repo_url: "test_repo.txt"
 package_name: "A"
+repo_url: "test_repo.txt"
 repo_mode: "test"
 ascii_tree: true
 filter_substring: ""
-
+load_order: true

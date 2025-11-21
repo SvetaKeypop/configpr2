@@ -6,22 +6,15 @@ from graph_builder import (
     load_test_repo_graph,
     build_graph_test,
     build_graph_real_repo,
+    compute_load_order,
 )
 
 
 def print_graph(graph: dict, root: str) -> None:
-    """
-    Простой вывод графа в виде списка узлов и их зависимостей.
-    (ASCII-дерево можно будет сделать на следующем этапе.)
-    """
     print("Граф зависимостей:")
-
-    # Чтобы корневой пакет выводился первым
     printed = set()
     if root in graph:
         _print_node(graph, root, printed, indent="")
-
-    # остальные узлы (если вдруг есть)
     for node in graph:
         if node not in printed:
             _print_node(graph, node, printed, indent="")
@@ -50,7 +43,6 @@ def main() -> int:
 
     try:
         if config.repo_mode == "test":
-            # РЕЖИМ ТЕСТОВОГО РЕПОЗИТОРИЯ (файл с буквами)
             test_graph = load_test_repo_graph(config.repo_url)
             graph, cycles = build_graph_test(
                 test_graph,
@@ -58,7 +50,6 @@ def main() -> int:
                 filter_substring,
             )
         else:
-            # РЕАЛЬНЫЙ РЕПОЗИТОРИЙ ALPINE
             graph, cycles = build_graph_real_repo(
                 config.repo_url,
                 config.package_name,
@@ -71,18 +62,27 @@ def main() -> int:
         print(f"[неожиданная ошибка] {e}", file=sys.stderr)
         return 1
 
-    # Выводим граф
-    print_graph(graph, config.package_name)
+    # --- НОВОЕ: режим порядка загрузки ---
+    if config.load_order:
+        load_order = compute_load_order(graph, config.package_name)
+        print(f"Порядок загрузки для пакета '{config.package_name}':")
+        for name in load_order:
+            print(f"  {name}")
 
-    # Если есть циклы — выводим их отдельно
-    if cycles:
-        print("\nОбнаружены циклические зависимости:")
-        for cycle in cycles:
-            # формат: A -> B -> C -> A
-            path = " -> ".join(cycle)
-            print(f"  {path}")
+        if cycles:
+            print("\nВнимание: обнаружены циклические зависимости, порядок частичный:")
+            for cycle in cycles:
+                print("  " + " -> ".join(cycle))
     else:
-        print("\nЦиклические зависимости не обнаружены.")
+        # Поведение этапа 3: выводим граф и циклы
+        print_graph(graph, config.package_name)
+
+        if cycles:
+            print("\nОбнаружены циклические зависимости:")
+            for cycle in cycles:
+                print("  " + " -> ".join(cycle))
+        else:
+            print("\nЦиклические зависимости не обнаружены.")
 
     return 0
 

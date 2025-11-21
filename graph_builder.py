@@ -157,3 +157,30 @@ def build_graph_real_repo(
 
     dfs(root)
     return result, cycles
+
+def compute_load_order(graph: Graph, root: str) -> List[str]:
+    # Вычисляет порядок загрузки зависимостей для заданного пакета.
+    visited: Set[str] = set()
+    visiting: Set[str] = set()
+    order: List[str] = []
+
+    def dfs(node: str) -> None:
+        if node in visited:
+            return
+        if node in visiting:
+            # узел в текущем стеке → цикл, не углубляемся дальше
+            return
+
+        visiting.add(node)
+
+        for dep in graph.get(node, []):
+            # dep может быть, например, "X (cycle)" — возьмём только имя до пробела
+            dep_name = dep.split()[0]
+            dfs(dep_name)
+
+        visiting.remove(node)
+        visited.add(node)
+        order.append(node)
+
+    dfs(root)
+    return order
