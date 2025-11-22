@@ -168,7 +168,7 @@ def compute_load_order(graph: Graph, root: str) -> List[str]:
         if node in visited:
             return
         if node in visiting:
-            # узел в текущем стеке → цикл, не углубляемся дальше
+            # узел в текущем стеке - цикл, не углубляемся дальше
             return
 
         visiting.add(node)
@@ -184,3 +184,46 @@ def compute_load_order(graph: Graph, root: str) -> List[str]:
 
     dfs(root)
     return order
+
+def graph_to_dot(graph: Graph, root: str) -> str:
+    # Формирует текстовое представление графа зависимостей в формате Graphviz (DOT).
+    # graph: словарь {узел: [список зависимостей]}
+    # root: имя корневого пакета (для информации, можно подсветить)
+
+    lines: List[str] = []
+    lines.append('digraph dependencies {')
+    lines.append('  rankdir=LR;')
+    lines.append('  node [shape=box, fontsize=10];')
+    lines.append('')
+
+    # Явно объявим все узлы
+    for node in graph:
+        # уберём пометки "(cycle)" если вдруг попадутся в ключах
+        node_name = node.split()[0]
+        attrs = []
+        if node_name == root:
+            attrs.append('style=filled')
+            attrs.append('fillcolor=lightgray')
+        attr_str = ''
+        if attrs:
+            attr_str = ' [' + ', '.join(attrs) + ']'
+        lines.append(f'  "{node_name}"{attr_str};')
+
+    lines.append('')
+
+    # Добавим рёбра
+    for src, deps in graph.items():
+        src_name = src.split()[0]
+        for dep in deps:
+            dep_name = dep.split()[0]  # "X (cycle)" -> "X"
+            if not dep_name:
+                continue
+            # Можно пометить ребро цикла цветом, если хочешь:
+            is_cycle = '(cycle)' in dep
+            if is_cycle:
+                lines.append(f'  "{src_name}" -> "{dep_name}" [color=red, label="cycle"];')
+            else:
+                lines.append(f'  "{src_name}" -> "{dep_name}";')
+
+    lines.append('}')
+    return "\n".join(lines)
