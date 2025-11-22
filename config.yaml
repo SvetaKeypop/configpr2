@@ -1,6 +1,6 @@
-package_name: "A"
-repo_url: "test_repo.txt"
-repo_mode: "test"
+package_name: "curl"
+repo_url: "https://dl-cdn.alpinelinux.org/alpine/v3.19/main/x86_64/"
+repo_mode: "real"
 ascii_tree: true
 filter_substring: ""
 load_order: false

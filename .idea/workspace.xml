@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9dd368ce-65c1-46cd-a1fd-68bdf66bd2a9" name="Changes" comment="Выполнен четвёртый этап">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="9dd368ce-65c1-46cd-a1fd-68bdf66bd2a9" name="Changes" comment="Выполнен пятый этап">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/graph_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +86,7 @@
       <updated>1763114658426</updated>
       <workItem from="1763114659797" duration="34000" />
       <workItem from="1763114701053" duration="12398000" />
-      <workItem from="1763806712156" duration="2038000" />
+      <workItem from="1763806712156" duration="4971000" />
     </task>
     <task id="LOCAL-00001" summary="Выполнен третий этап">
       <option name="closed" value="true" />
@@ -107,7 +104,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763735153301</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Выполнен пятый этап">
+      <option name="closed" value="true" />
+      <created>1763809265663</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1763809265663</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,11 +121,12 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Выполнен третий этап" />
     <MESSAGE value="Выполнен четвёртый этап" />
-    <option name="LAST_COMMIT_MESSAGE" value="Выполнен четвёртый этап" />
+    <MESSAGE value="Выполнен пятый этап" />
+    <option name="LAST_COMMIT_MESSAGE" value="Выполнен пятый этап" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/configpr2$graph_builder.coverage" NAME="graph_builder Coverage Results" MODIFIED="1763734397460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/configpr2$apk_dependencies.coverage" NAME="apk_dependencies Coverage Results" MODIFIED="1763127211066" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/configpr2$main.coverage" NAME="main Coverage Results" MODIFIED="1763809129432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/configpr2$main.coverage" NAME="main Coverage Results" MODIFIED="1763812232321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
