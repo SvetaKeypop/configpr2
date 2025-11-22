@@ -33,4 +33,4 @@ load_order: true
 ---
 
 # Пример графа:
-![](img.png)
+![пример графа](img.jpg)
